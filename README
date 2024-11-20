@@ -1,0 +1,31 @@
+# Project Name.
+Edita CMakePresets.json y pon tu ruta de vcpkg.
+
+*Cambia Licencia antes de subir ningun cambio al proyecto en git.*
+
+Añadir Libreria con VCPKG:
+    `vcpkg add port <library_name>`
+    Edita CMakeLists.txt y añade:
+    `find_package(<library_name> REQUIRED)`
+    `target_link_libraries(<ExectuableName> PRIVATE <libname>::<libname>)`
+
+Estructura proyecto CPP:
+
+*/src* y */include*
+    Depende de lo que se quiera:
+    - **Merged Header Placement**: Solo hay una carpeta con código fuente y todos los archivos son hermanos del directorio con **source**.
+    - **Separate Header Placement**: Hay dos directorios *include* y *src* con codigo fuente. **/include** esta designado a tener los headers públicos de la libreria, mientras que 
+    **/src** esta designado a tener el código compilable y los private headers `(Estos son opcionales)`.
+    
+    <root>/
+        include/
+            cat/
+                sounds/
+                    meow.hpp
+        src/
+            cat/
+                sounds/
+                    meow.cpp
+    
+*/libs*
+    Este directorio no debe ser tocado a no ser que se quiera subdividir el proyecto en submodulos, su presencia exclude a **/src** y **/include**
