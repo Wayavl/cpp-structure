@@ -9,7 +9,11 @@ set(CMAKE_CXX_STANDARD_REQUIRED ON)
 
 
 # Ejecutable
-add_executable(main src/Main.cpp)
+add_executable(main src/Main.cpp src/Class1/Class1.cpp)
+
+# include folder
+target_include_directories(main PRIVATE ${CMAKE_SOURCE_DIR}/include)
+
 
 # Link de librerias
 
